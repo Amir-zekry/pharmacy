@@ -1,15 +1,15 @@
-// import BestSellers from "@/ui/BestSellers";
-// import Header from "@/ui/Header";
-// import { getBestSellers } from "./actions";
-// import PharmacyFeatures from "@/ui/PharmacyFeatures";
+import BestSellers from "@/ui/BestSellers";
+import Header from "@/ui/Header";
+import { getBestSellers } from "./actions";
+import PharmacyFeatures from "@/ui/PharmacyFeatures";
 
 export default async function HomePage() {
-  // const products = await getBestSellers();
+  const products = await getBestSellers();
   return (
     <div className="w-full min-h-screen">
-      {/* <Header />
+      <Header />
       <BestSellers products={products} />
-      <PharmacyFeatures /> */}
+      <PharmacyFeatures />
     </div>
   );
 }

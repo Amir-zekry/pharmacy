@@ -1,13 +1,12 @@
 // filepath: /d:/webApps/noon/noon/app/layout.js
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "../ui/Nav";
-// import Footer from "@/ui/Footer";
-// import ReduxProvider from "@/Redux/provider";
-// import ShoppingCart from "@/ui/shoppingCart";
-// import { getCartProductsCount, getCartProducts, getCartTotalPrice } from "@/app/actions";
-// import { inter } from "@/ui/fonts/fonts";
+import Footer from "@/ui/Footer";
+import ReduxProvider from "@/Redux/provider";
+import ShoppingCart from "@/ui/shoppingCart";
+import { getCartProductsCount, getCartProducts, getCartTotalPrice } from "@/app/actions";
 import CustomSessionProvider from "./SessionProvider";
+import { inter } from "@/ui/fonts/fonts";
 
 export const metadata = {
   title: "noon pharmacy",
@@ -15,22 +14,22 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  // const cartProducts = await getCartProducts();
-  // const cartProductsCount = await getCartProductsCount();
-  // const total_price = await getCartTotalPrice()
+  const cartProducts = await getCartProducts();
+  const cartProductsCount = await getCartProductsCount();
+  const total_price = await getCartTotalPrice()
   return (
     <html lang="en">
       <CustomSessionProvider>
-        {/* <ReduxProvider> */}
-        <body
-          className={`antialiased flex flex-col`}
-        >
-          <Nav />
-          <main className="pt-16">{children}</main>
-          {/* <ShoppingCart total_price={total_price} cartProducts={cartProducts} />
-            <Footer /> */}
-        </body>
-        {/* </ReduxProvider> */}
+        <ReduxProvider>
+          <body
+            className={`${inter.className} antialiased flex flex-col`}
+          >
+            <Nav cartProductsCount={cartProductsCount} />
+            <main className="pt-16">{children}</main>
+            <ShoppingCart total_price={total_price} cartProducts={cartProducts} />
+            <Footer />
+          </body>
+        </ReduxProvider>
       </CustomSessionProvider>
     </html>
   );
