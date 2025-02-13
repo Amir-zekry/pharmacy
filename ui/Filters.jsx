@@ -9,8 +9,8 @@ export default function Filters() {
     const searchParams = useSearchParams();
     const pathname = usePathname();
     const { replace } = useRouter();
-    const showFilters = useSelector((state) => state.filters.value)
-    const dispatch = useDispatch()
+    const showFilters = useSelector((state) => state.filters.value);
+    const dispatch = useDispatch();
 
     function handleFilters(filter) {
         const params = new URLSearchParams(searchParams);
@@ -23,7 +23,10 @@ export default function Filters() {
     }
 
     return (
-        <div className={`flex fixed top-0 bg-white md:static h-svh z-50 md:h-auto w-full md:w-1/4 px-8  flex-col items-start text-left ${showFilters ? 'md:block' : 'hidden md:block'}`}>
+        <div
+            className={`flex fixed top-0 bg-white md:static h-svh md:h-auto w-full md:w-1/4 px-8 flex-col items-start text-left 
+                        ${showFilters ? "md:block" : "hidden md:block"} z-50 md:z-auto`}
+        >
             <div className="flex w-full justify-between items-center pt-8">
                 <h1 className="hidden md:block text-2xl w-full text-left">Filter by</h1>
                 <div className="flex items-center justify-between w-full">
