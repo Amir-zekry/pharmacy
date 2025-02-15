@@ -8,10 +8,10 @@ export default async function StoreProducts({ query, currentPage, sort, filters 
     return (
         <div className="grid grid-cols-2 lg:grid-cols-4 md:gap-x-12 gap-4 px-4">
             {products.map((product) => (
-                <form action={pushProducts} className="flex space-y-1 flex-col items-center text-center sm:text-sm justify-center">
+                <form key={product.id} action={pushProducts} className="flex space-y-1 flex-col items-center text-center sm:text-sm justify-center">
                     <div className="w-full bg-gray-50 flex items-center justify-center h-72 rounded-md">
                         <img
-                            className="rounded-lg transition-transform transform hover:scale-110 duration-300"
+                            className="transition-transform transform hover:scale-110 duration-300"
                             src={product.image_url}
                             alt={product.name}
                             style={{ objectFit: 'contain', maxHeight: '100%', maxWidth: '100%' }}

@@ -5,11 +5,11 @@ export default function OrderSummaryProducts({ LastOrderItem }) {
             <div className="flex gap-x-2">
                 <img src={LastOrderItem.order_image} alt={LastOrderItem.product_name} className="size-16 rounded-md" />
                 <div className="space-y-2 flex flex-col">
-                    <text>{LastOrderItem.product_name}</text>
-                    <text>{LastOrderItem.quantity}</text>
+                    <p>{LastOrderItem.product_name}</p>
+                    <p>{LastOrderItem.quantity}</p>
                 </div>
             </div>
-            <text className="font-bold">{LastOrderItem.price}</text>
+            <p className="font-bold">{LastOrderItem.price}</p>
         </section>
     )
 }

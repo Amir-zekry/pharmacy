@@ -19,7 +19,7 @@ export default function Pagination() {
             <Link href={createPageUrl(currentPage - 1)} className="hover:text-gray-300">
                 <FaAngleLeft size={20} />
             </Link>
-            <text>{currentPage}</text>
+            <p>{currentPage}</p>
             <Link href={createPageUrl(currentPage + 1)} className="hover:text-gray-300">
                 <FaAngleRight size={20} />
             </Link>

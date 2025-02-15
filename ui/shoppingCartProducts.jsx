@@ -23,7 +23,7 @@ const ShoppingCartProducts = ({ product }) => {
 
 
     return (
-        <div className="flex flex-col border-t items-start pb-2">
+        <div className="flex flex-col h-1/3 border-t items-center justify-center pb-2">
             <ul className="flex justify-between items-center w-full px-4">
                 <div className="flex items-center gap-x-4">
                     <li>
@@ -42,7 +42,7 @@ const ShoppingCartProducts = ({ product }) => {
                         <h3>{product.product_price}</h3>
                         <div className='flex items-center gap-x-2 justify-center px-2 py-1 border '>
                             <button type="button" onClick={async () => quantityDecrement(product.product_id)}>-</button>
-                            <text min="1" max="10" className="w-full text-center">{product.product_quantity}</text>
+                            <p min="1" max="10" className="w-full text-center">{product.product_quantity}</p>
                             <button type="button" onClick={async () => quantityIncrement(product.product_id)}>+</button>
                         </div>
                     </li>

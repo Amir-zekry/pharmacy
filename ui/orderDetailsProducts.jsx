@@ -4,11 +4,11 @@ export default function OrderDetailsProducts({ orderDetailsItem }) {
             <div className="flex gap-x-2">
                 <img src={orderDetailsItem.order_image} alt={orderDetailsItem.product_name} className="size-16 rounded-md" />
                 <div className="space-y-2 flex flex-col">
-                    <text>{orderDetailsItem.product_name}</text>
-                    <text>{orderDetailsItem.quantity}</text>
+                    <p>{orderDetailsItem.product_name}</p>
+                    <p>{orderDetailsItem.quantity}</p>
                 </div>
             </div>
-            <text className="font-bold">{orderDetailsItem.price}</text>
+            <p className="font-bold">{orderDetailsItem.price}</p>
         </section>
     )
 }

@@ -30,7 +30,7 @@ export default function Login() {
                     </div>
                     <div className="flex gap-x-6 items-center">
                         <hr className="border-gray-300 w-1/2" />
-                        <text>or</text>
+                        <p>or</p>
                         <hr className="border-gray-300 w-1/2" />
                     </div>
                     <form className="space-y-4 text-black md:space-y-6" action="#">

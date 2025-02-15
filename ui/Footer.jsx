@@ -6,7 +6,7 @@ import { MdEmail, MdPhone, MdLocationOn, MdAccessTime } from "react-icons/md";
 
 const Footer = () => {
     return (
-        <footer className="bg-gradient-to-r mt-10 from-blue-600 to-blue-800 text-white py-12">
+        <footer className="mt-10 bg-[#F8ECE5] text-[#724EE2] py-12">
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {/* Contact Information */}
@@ -25,15 +25,21 @@ const Footer = () => {
                         <div className="space-y-2">
                             <div className="flex items-center space-x-2">
                                 <MdLocationOn className="text-xl" />
-                                <p>الندي مول - الشيخ زايد</p>
+                                <a href="https://goo.gl/maps/your-google-maps-link" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                                    الندي مول - الشيخ زايد
+                                </a>
                             </div>
                             <div className="flex items-center space-x-2">
                                 <MdPhone className="text-xl" />
-                                <p>+2 01030857748</p>
+                                <a href="tel:+201030857748" className="hover:underline">
+                                    +2 01030857748
+                                </a>
                             </div>
                             <div className="flex items-center space-x-2">
                                 <MdEmail className="text-xl" />
-                                <p>support@noonpharmacy.org</p>
+                                <a href="mailto:support@noonpharmacy.org" className="hover:underline">
+                                    support@noonpharmacy.org
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -41,6 +47,7 @@ const Footer = () => {
                     {/* Quick Links */}
                     <div className="space-y-4">
                         <h3 className="text-xl font-bold">Quick Links</h3>
+                        <p>Not working yet</p>
                         <ul className="space-y-2">
                             {[
                                 "Frequently Asked Questions",
@@ -48,8 +55,8 @@ const Footer = () => {
                                 "Return Policy",
                                 "Privacy Policy",
                             ].map((link, index) => (
-                                <li key={index}>
-                                    <a href="#" className="hover:text-blue-200 transition duration-300">
+                                <li className="pointer-events-none" key={index}>
+                                    <a href="#" className="text-gray-900 transition duration-300">
                                         {link}
                                     </a>
                                 </li>
@@ -73,22 +80,22 @@ const Footer = () => {
                         <h3 className="text-xl font-bold">Connect With Us</h3>
                         <div className="flex space-x-4">
                             {[
-                                { icon: <FaFacebookF className="text-xl" />, href: "#" },
-                                { icon: <FaTwitter className="text-xl" />, href: "#" },
-                                { icon: <FaInstagram className="text-xl" />, href: "#" },
+                                { icon: <FaFacebookF className="text-xl" />, href: "https://www.facebook.com/profile.php?id=61569560729671" },
+                                { icon: <FaTwitter className="text-xl" />, href: "https://x.com/NoonPharmacy" },
+                                { icon: <FaInstagram className="text-xl" />, href: "https://www.instagram.com/noon.pharmacy08" },
                             ].map((social, index) => (
                                 <a
                                     key={index}
                                     href={social.href}
-                                    className="bg-white text-blue-600 p-2 rounded-full hover:bg-blue-100 transition duration-300"
+                                    className="bg-[#724EE2] text-white p-2 rounded-full transition duration-300"
                                 >
                                     {social.icon}
                                 </a>
                             ))}
                         </div>
-                        <p className="text-sm mt-4">
+                        {/* <p className="text-sm mt-4">
                             Subscribe to our newsletter for updates and special offers!
-                        </p>
+                        </p> */}
                     </div>
                 </div>
 

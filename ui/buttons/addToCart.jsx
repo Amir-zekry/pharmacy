@@ -13,7 +13,7 @@ export default function AddToCart({ product }) {
         }
     }
     return (
-        <button onClick={addToCart} type="submit" className="bg-emerald-700 hover:bg-emerald-600 text-white px-4 py-2 w-full rounded-md mt-auto">
+        <button onClick={addToCart} type="submit" className="bg-[#724EE2] hover:bg-[#BFAAF9] text-white px-4 py-2 w-full mt-auto">
             Add to cart
         </button>
     )

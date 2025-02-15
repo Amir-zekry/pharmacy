@@ -16,15 +16,13 @@ export default async function (props) {
 
   return (
     <div className="flex relative flex-col md:flex-row pt-8">
-      <div className="md:hidden flex w-full justify-center items-center">
-        <ShowFilters />
-      </div>
+      <ShowFilters />
       <Filters />
       <div className="w-full md:w-3/4">
         <div className="md:hidden w-full flex items-center justify-center mb-4">
         </div>
 
-        <div className="flex justify-between items-center pb-4 px-4">
+        <div className="grid grid-cols-2 md:gap-x-12 gap-4 px-4 pb-4">
           <Search />
           <Sort />
         </div>

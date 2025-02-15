@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Header() {
     return (
-        <header className="relative p-6 bg-blue-900">
+        <header className="relative p-6 bg-[#F8ECE5]">
             <div
                 className="bg-fixed bg-cover bg-center w-full h-[60vh] md:h-screen flex justify-center items-center"
                 style={{ backgroundImage: "url('/noonpharmacy.webp')" }}
@@ -14,7 +14,7 @@ export default function Header() {
                     <p className="text-base md:text-lg mb-6">
                         Explore our wide range of medicine and cosmetic products and get the best for your health.
                     </p>
-                    <Link href="/shop" className="bg-emerald-700 text-white py-2 px-6 rounded-md text-lg font-semibold hover:bg-emerald-600 transition duration-300">
+                    <Link href="/shop" className="bg-[#724EE2] text-white py-2 px-20 text-base font-semibold hover:bg-emerald-600 transition duration-300">
                         Shop Now
                     </Link>
                 </div>

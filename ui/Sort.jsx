@@ -16,13 +16,9 @@ export default function Sort() {
         replace(`${pathname}?${params.toString()}`)
     }
     return (
-        <div className="flex justify-end items-center pr-4 space-x-2 w-full md:w-1/3">
-            <label className="md:block hidden">Sort by</label>
-            <label className="md:hidden lg:hidden">
-                <FaSort size={16} />
-            </label>
+        <div className="flex items-center space-x-2">
             <select
-                className="w-full md:w-[70%] p-1 bg-gray-50 hover:bg-gray-100 flex items-center border"
+                className="w-full py-2 bg-gray-50 hover:bg-gray-100 flex items-center border"
                 onChange={(e) => handleSort(e.target.value)}
                 defaultValue={searchParams.get('sort')?.toString()}
             >

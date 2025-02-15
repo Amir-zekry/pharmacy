@@ -9,7 +9,7 @@ export default function EmptyCart() {
             </section>
             <section className="flex items-center justify-center h-80">
                 <div className="flex flex-col justify-center items-center">
-                    <text className="text-3xl">Your cart is empty</text>
+                    <p className="text-3xl">Your cart is empty</p>
                     <Link className="text-gray-600 underline hover:text-gray-400" href='/shop'>Back to drug store</Link>
                 </div>
             </section>
