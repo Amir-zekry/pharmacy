@@ -25,7 +25,7 @@ const Footer = () => {
                         <div className="space-y-2">
                             <div className="flex items-center space-x-2">
                                 <MdLocationOn className="text-xl" />
-                                <a href="https://goo.gl/maps/your-google-maps-link" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                                <a href="https://maps.app.goo.gl/W2Qb6kxDzFzbZYuV8" target="_blank" rel="noopener noreferrer" className="hover:underline">
                                     الندي مول - الشيخ زايد
                                 </a>
                             </div>
