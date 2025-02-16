@@ -89,7 +89,7 @@ export default function Checkout({ products, totalPrice }) {
                                 <h3 className="text-sm lg:text-base text-gray-800 mb-4">Payment Method</h3>
                                 <div className="grid md:grid-cols-2 gap-4">
                                     <div>
-                                        <select name="payment_method" className="px-4 py-3 cursor-pointer bg-gray-100 text-gray-800 w-full text-sm rounded-md focus:outline-blue-600">
+                                        <select name="payment_method" className="px-4 py-3 cursor-pointer bg-gray-100 text-gray-800 w-full text-sm rounded-md focus:outline-[#724EE2]">
                                             <option value={'COD'}>Cash on delivery</option>
                                         </select>
                                     </div>
@@ -98,7 +98,7 @@ export default function Checkout({ products, totalPrice }) {
 
                             <div className="flex gap-4 max-md:flex-col mt-8">
                                 <Link href='/cart' className="rounded-md text-center px-4 py-2.5 w-full text-sm tracking-wide bg-transparent hover:bg-gray-100 border border-gray-300 text-gray-800 max-md:order-1">Cancel</Link>
-                                <button type="submit" className="rounded-md px-4 py-2.5 w-full text-sm tracking-wide bg-blue-600 hover:bg-blue-700 text-white">Complete Purchase</button>
+                                <button type="submit" className="rounded-md px-4 py-2.5 w-full text-sm tracking-wide bg-[#724EE2] hover:bg-[#BFAAF9] text-white">Complete Purchase</button>
                             </div>
                         </div>
                     </form>

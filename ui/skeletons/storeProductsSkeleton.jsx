@@ -1,8 +1,8 @@
 export default function StoreProductsSkeleton() {
     const skeletonItems = Array.from({ length: 8 }).map((_, index) => (
         <div key={index} className="animate-pulse flex space-y-1 flex-col items-center text-center sm:text-sm justify-center">
-            <div className="w-full bg-gray-200 flex items-center justify-center h-72 rounded-md">
-                <div className="bg-gray-300 rounded-lg w-full h-full"></div>
+            <div className="w-full bg-gray-200 flex items-center justify-center h-72">
+                <div className="bg-gray-300 w-full h-full"></div>
             </div>
             <div className="w-3/4 h-4 bg-gray-200  mt-2"></div>
             <div className="w-full h-4 bg-gray-200  mt-2"></div>

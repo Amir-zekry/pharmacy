@@ -9,7 +9,7 @@ const CartLayout = ({ children }) => {
     return (
         <div className="pt-8">
             <header className="cart-header">
-                <ul className='flex justify-center items-center gap-x-4'>
+                <ul className='flex justify-center items-center gap-x-4 px-4'>
                     <li className={clsx('', { 'text-blue-500': pathname == '/cart' })}>
                         <Link href='/cart'>Cart</Link>
                     </li>

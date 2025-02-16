@@ -24,7 +24,7 @@ export default function Cart({ products, totalPrice }) {
                             Total:<span>{totalPrice}</span>
                         </h2>
                     </div>
-                    <Link href='/cart/checkout' className="w-full bg-emerald-700 hover:bg-emerald-600 flex items-center justify-center py-2">
+                    <Link href='/cart/checkout' className="w-full bg-[#724EE2] hover:bg-[#BFAAF9] flex items-center justify-center py-2">
                         Checkout
                     </Link>
                 </div>

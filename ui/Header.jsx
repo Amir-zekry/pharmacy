@@ -14,7 +14,7 @@ export default function Header() {
                     <p className="text-base md:text-lg mb-6">
                         Explore our wide range of medicine and cosmetic products and get the best for your health.
                     </p>
-                    <Link href="/shop" className="bg-[#724EE2] text-white py-2 px-20 text-base font-semibold hover:bg-emerald-600 transition duration-300">
+                    <Link href="/shop" className="text-white py-2 px-20 text-base font-semibold bg-[#724EE2] hover:bg-[#BFAAF9]transition duration-300">
                         Shop Now
                     </Link>
                 </div>

@@ -103,8 +103,8 @@ export default function OrderSummary({ lastOrders, LastOrdersItems }) {
                 </section>
             ))}
             <section className="flex justify-center items-center w-full gap-x-2">
-                <Link href='/shop' className="flex items-center justify-center w-1/2 py-1 bg-blue-700 hover:bg-blue-400">Back to store</Link>
-                <Link href='/orders' className="flex items-center justify-center w-1/2 py-1 bg-blue-700 hover:bg-blue-400">Go to orders</Link>
+                <Link href='/shop' className="flex items-center justify-center w-1/2 py-1 bg-[#724EE2] hover:bg-[#BFAAF9]">Back to store</Link>
+                <Link href='/orders' className="flex items-center justify-center w-1/2 py-1 bg-[#724EE2] hover:bg-[#BFAAF9]">Go to orders</Link>
             </section>
         </main>
     )

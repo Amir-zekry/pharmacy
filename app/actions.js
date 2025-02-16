@@ -7,6 +7,12 @@ import { authOptions } from './api/auth/[...nextauth]/route';
 import getUserId from './auth';
 import { cookies } from 'next/headers';
 
+export async function getTotalPages() {
+  unstable_noStore()
+  const data = await sql`SELECT * FROM noon_products`
+  return data.rowCount
+}
+
 export async function getProducts(query, currentPage, sort, filters) {
   unstable_noStore();
   const offset = (currentPage - 1) * 8;
