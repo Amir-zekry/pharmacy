@@ -46,7 +46,7 @@ export default function Filters() {
                 </button>
             </div>
             <hr className="border border-gray-400 w-full mt-2" />
-            <div className={`flex flex-col text-left items-start w-full overflow-y-hidden transition-all duration-1000 ease-in-out ${showFiltersDesktop ? 'max-h-screen' : 'max-h-0'}`}>
+            <div className={`flex flex-col text-left items-start w-full overflow-y-hidden transition-all duration-700 ease-in-out ${showFiltersDesktop ? 'max-h-screen' : 'max-h-0'}`}>
                 {filterOptions.map((filter) => {
                     const isSelected = searchParams.get("filter") === filter;
                     return (

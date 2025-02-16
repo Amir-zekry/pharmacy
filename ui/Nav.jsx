@@ -41,22 +41,25 @@ export default function Nav({ cartProductsCount }) {
                     <NavLinks setIsMenuOpen={setIsMenuOpen} />
                     {/* User Dropdown */}
                     <li className="relative">
-                        <button onClick={() => setIsDropdownOpen(!isDropdownOpen)} className="flex items-center">
-                            {session ? (
+                        {session ? (
+                            <button onClick={() => { setIsDropdownOpen(!isDropdownOpen) }} className="flex items-center">
                                 <img src={session?.user.image} alt="User Profile" className="w-10 h-10 rounded-full" />
-                            ) : (
+                            </button>
+                        ) : (
+                            <button onClick={() => { setIsMenuOpen(!isMenuOpen) }} className="flex items-center">
                                 <Link className="nav-link" href="/login">Login</Link>
-                            )}
-                        </button>
-
+                            </button>
+                        )}
                         {/* Dropdown Menu */}
                         {session && isDropdownOpen && (
-                            <ul className="absolute z-50 text-black px-4 right-0 bg-gray-100 shadow-md rounded-md w-44 py-2">
+                            <ul className="absolute z-50 text-black pl-4 right-0 bg-gray-100 shadow-md rounded-md w-48 py-2">
                                 <li>{session?.user.name}</li>
                                 <li className="text-sm text-gray-600">{session?.user.email}</li>
-                                <hr className="my-2 border-gray-300" />
+                                <hr className="my-2 mr-4 border-gray-300" />
                                 <li onClick={() => { setIsMenuOpen(false); setIsDropdownOpen(false); }}><Link href='/orders' className="dropdown-item hover:text-gray-400">Orders</Link></li>
-                                <li><button className="dropdown-item hover:text-red-200" onClick={() => signOut()}>Sign Out</button></li>
+                                <li>
+                                    <button className="hover:text-red-200" onClick={() => signOut()}>Sign Out</button>
+                                </li>
                             </ul>
                         )}
                     </li>
