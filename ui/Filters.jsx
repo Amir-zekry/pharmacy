@@ -1,6 +1,8 @@
 "use client";
 import { hideFilters } from "@/Redux/filters";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
+import { FaMinus, FaPlus } from "react-icons/fa";
 import { IoIosClose } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -11,7 +13,7 @@ export default function Filters() {
     const { replace } = useRouter();
     const showFilters = useSelector((state) => state.filters.value);
     const dispatch = useDispatch();
-
+    const [showFiltersDesktop, setShowFiltersDesktop] = useState(false)
     function handleFilters(filter) {
         const params = new URLSearchParams(searchParams);
         if (filter) {
@@ -27,17 +29,24 @@ export default function Filters() {
             className={`flex fixed top-0 bg-white md:static h-svh md:h-auto w-full md:w-1/4 px-8 flex-col items-start text-left 
                         ${showFilters ? "md:block" : "hidden md:block"} z-50 md:z-auto`}
         >
-            <div className="flex w-full justify-between items-center pt-8 md:pt-0">
-                <h1 className="hidden md:block text-2xl w-full text-left">Filter by</h1>
-                <div className="flex items-center justify-between w-full">
-                    <h1 className="block md:hidden text-2xl text-left">Filters</h1>
-                    <button className="hover:text-gray-300 md:hidden block" onClick={() => dispatch(hideFilters())}>
-                        <IoIosClose size={28} />
-                    </button>
-                </div>
+            <div className="md:flex w-full hidden items-center justify-between pt-8 md:pt-0">
+                <h1 className="text-2xl">Filter by</h1>
+                <button onClick={() => setShowFiltersDesktop(!showFiltersDesktop)}>
+                    {showFiltersDesktop ? (
+                        <FaMinus size={16} />
+                    ) : (
+                        <FaPlus size={16} />
+                    )}
+                </button>
             </div>
-            <hr className="border-t border-gray-400 w-full mt-2 mb-4" />
-            <div className="flex flex-col text-left items-start w-full">
+            <div className="md:hidden flex items-center justify-between w-full pt-4">
+                <h1 className=" text-2xl text-left">Filters</h1>
+                <button className="hover:text-gray-300" onClick={() => dispatch(hideFilters())}>
+                    <IoIosClose size={28} />
+                </button>
+            </div>
+            <hr className="border border-gray-400 w-full mt-2" />
+            <div className={`flex flex-col text-left items-start w-full overflow-y-hidden transition-all duration-1000 ease-in-out ${showFiltersDesktop ? 'max-h-screen' : 'max-h-0'}`}>
                 {filterOptions.map((filter) => {
                     const isSelected = searchParams.get("filter") === filter;
                     return (
@@ -52,6 +61,7 @@ export default function Filters() {
                     );
                 })}
             </div>
+            <hr className="md:block hidden border border-gray-400 w-full" />
         </div>
     );
 }
