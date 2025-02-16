@@ -27,7 +27,7 @@ const ShoppingCart = ({ cartProducts, total_price }) => {
                     <div className='h-full'>
                         <div className='h-[70%] overflow-y-auto'>
                             {cartProducts.map((product) => (
-                                <ShoppingCartProducts key={product.id} product={product} />
+                                <ShoppingCartProducts key={product.product_id} product={product} />
                             ))}
                         </div>
                         <div className='flex px-8'>
