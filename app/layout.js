@@ -7,6 +7,7 @@ import ShoppingCart from "@/ui/shoppingCart";
 import { getCartProductsCount, getCartProducts, getCartTotalPrice } from "@/app/actions";
 import CustomSessionProvider from "./SessionProvider";
 import { inter } from "@/ui/fonts/fonts";
+import { Analytics } from "@vercel/analytics/react"
 
 export const metadata = {
   title: "noon pharmacy",
@@ -25,7 +26,10 @@ export default async function RootLayout({ children }) {
             className={`${inter.className} antialiased flex flex-col`}
           >
             <Nav cartProductsCount={cartProductsCount} />
-            <main className="pt-16">{children}</main>
+            <main className="pt-16">
+              {children}
+              <Analytics />
+            </main>
             <ShoppingCart total_price={total_price} cartProducts={cartProducts} />
             <Footer />
           </body>
