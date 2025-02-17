@@ -6,11 +6,11 @@ export default function StoreProductsSkeleton() {
             </div>
             <div className="w-3/4 h-4 bg-gray-200  mt-2"></div>
             <div className="w-full h-4 bg-gray-200  mt-2"></div>
-            <div className="flex gap-x-2 items-center border w-full -md p-2 mt-2">
+            {/* <div className="flex gap-x-2 items-center border w-full -md p-2 mt-2">
                 <div className="w-8 h-6 bg-gray-200 "></div>
                 <div className="w-full h-4 bg-gray-200 "></div>
                 <div className="w-8 h-6 bg-gray-200 "></div>
-            </div>
+            </div> */}
             <div className="bg-[#724EE2] w-full h-9 -md mt-2"></div>
         </div>
     ));

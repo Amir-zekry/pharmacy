@@ -40,31 +40,34 @@ const ShoppingCartProducts = ({ product }) => {
 
 
     return (
-        <div className={`flex relative flex-col h-1/3 border-t items-center justify-center pb-2 ${Loading ? 'text-gray-200' : ''}`}>
+        <div className={`flex relative flex-col h-1/3 border-t items-center justify-center pb-2`}>
             {Loading && (
-                <svg
-                    className="absolute animate-spin h-10 w-10 text-gray-600"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                >
-                    <circle
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="purple"
-                        strokeWidth="2"
-                    />
-                    <circle
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="white"
-                        strokeWidth="2"
-                        strokeDasharray="31.4 62.8"
-                        strokeDashoffset="0"
-                    />
-                </svg>
+                <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-75">
+
+                    <svg
+                        className="animate-spin h-10 w-10 text-gray-600"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                    >
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="purple"
+                            strokeWidth="2"
+                        />
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="white"
+                            strokeWidth="2"
+                            strokeDasharray="31.4 62.8"
+                            strokeDashoffset="0"
+                        />
+                    </svg>
+                </div>
             )}
             <ul className="flex justify-between items-center w-full px-4">
                 <div className="flex items-center gap-x-4">

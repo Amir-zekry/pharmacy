@@ -108,6 +108,7 @@ export async function getCartTotalPrice() {
 export async function quantityIncrement(productId) {
   const session = await getServerSession(authOptions); // Get session
   const user_id = await getUserId(session); // Get user ID (email or guest ID)
+
   await sql`
     UPDATE noon_cart
     SET product_quantity = product_quantity + 1
@@ -119,12 +120,16 @@ export async function quantityIncrement(productId) {
 export async function quantityDecrement(productId) {
   const session = await getServerSession(authOptions); // Get session
   const user_id = await getUserId(session); // Get user ID (email or guest ID)
-  await sql`
+  const result = await sql`SELECT product_quantity FROM noon_cart WHERE product_id = ${productId}`
+  const quantity = result.rows[0]?.product_quantity;
+  if (quantity > 1) {
+    await sql`
     UPDATE noon_cart
     SET product_quantity = product_quantity - 1
     WHERE product_id = ${productId} AND user_id = ${user_id}
   `;
-  revalidateTag('noon_cart');
+    revalidateTag('noon_cart');
+  }
 }
 
 export async function pushIntoOrders(formData, products) {

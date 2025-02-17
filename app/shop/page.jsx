@@ -6,7 +6,7 @@ import Pagination from "@/ui/pagination";
 import { Suspense } from "react";
 import StoreProductsSkeleton from "@/ui/skeletons/storeProductsSkeleton";
 import ShowFilters from "@/ui/buttons/showFilters";
-import { getProducts, getTotalPages } from "../actions";
+import { getTotalPages } from "../actions";
 
 export default async function (props) {
   const searchParams = await props.searchParams;
