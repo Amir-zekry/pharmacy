@@ -40,6 +40,15 @@ export default function Nav({ cartProductsCount }) {
                 <ul className={clsx("md:flex items-center gap-6", isMenuOpen ? "flex flex-col absolute top-full -translate-y-1 items-center justify-center left-0 w-full bg-[#F8ECE5] shadow-md py-4" : "hidden md:flex")}>
                     <NavLinks setIsMenuOpen={setIsMenuOpen} setIsDropdownOpen={setIsDropdownOpen} />
                     {/* User Dropdown */}
+                    {/* Shopping Cart */}
+                    <li>
+                        <button className="relative flex items-center" onClick={() => { dispatch(openCart()); setIsMenuOpen(false) }}>
+                            <FaShoppingBag size={24} />
+                            {cartProductsCount > 0 && (
+                                <span className="absolute -top-2 -right-2 bg-[#724EE2] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">{cartProductsCount}</span>
+                            )}
+                        </button>
+                    </li>
                     <li className="relative">
                         {session ? (
                             <button onClick={() => { setIsDropdownOpen(!isDropdownOpen) }} className="flex items-center">
@@ -62,16 +71,6 @@ export default function Nav({ cartProductsCount }) {
                                 </li>
                             </ul>
                         )}
-                    </li>
-
-                    {/* Shopping Cart */}
-                    <li>
-                        <button className="relative flex items-center" onClick={() => { dispatch(openCart()); setIsMenuOpen(false) }}>
-                            <FaShoppingBag size={24} />
-                            {cartProductsCount > 0 && (
-                                <span className="absolute -top-2 -right-2 bg-[#724EE2] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">{cartProductsCount}</span>
-                            )}
-                        </button>
                     </li>
                 </ul>
             </div>
