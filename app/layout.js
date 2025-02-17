@@ -8,6 +8,7 @@ import { getCartProductsCount, getCartProducts, getCartTotalPrice } from "@/app/
 import CustomSessionProvider from "./SessionProvider";
 import { inter } from "@/ui/fonts/fonts";
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata = {
   title: "noon pharmacy",
@@ -29,6 +30,7 @@ export default async function RootLayout({ children }) {
             <main className="pt-16">
               {children}
               <Analytics />
+              <SpeedInsights />
             </main>
             <ShoppingCart total_price={total_price} cartProducts={cartProducts} />
             <Footer />
