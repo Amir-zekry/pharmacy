@@ -20,7 +20,6 @@ export async function getTotalPages() {
 // }
 
 export async function getProducts(query, currentPage, sort, filters) {
-  unstable_noStore();
   const offset = (currentPage - 1) * 8;
   const data = await sql`
     SELECT *
