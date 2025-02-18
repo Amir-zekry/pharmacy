@@ -1,18 +1,16 @@
 'use client'
 import { configureStore } from '@reduxjs/toolkit';
 import cartReducer from './cart';
-import productReducer from './product';
-import cartProductReducer from './cartProduct';
 import filtersReducer from '@/Redux/filters'
+import addToCartReducer from '@/Redux/addToCart'
 
 // ...existing code...
 
 const store = configureStore({
     reducer: {
         cart: cartReducer,
-        product: productReducer,
-        cartProduct: cartProductReducer,
-        filters: filtersReducer
+        filters: filtersReducer,
+        addToCart: addToCartReducer
     },
 });
 

@@ -1,15 +1,16 @@
 'use client'
-import { useSelector } from "react-redux";
-import { decrement, increment } from "@/Redux/product";
-import { useDispatch } from "react-redux";
-export default function Quantity({ product }) {
-    const dispatch = useDispatch();
-    const quantity = useSelector((state) => state.product.quantities[product.id] || 1);
+import { quantityDecrement, quantityIncrement } from '@/app/actions';
+
+export default function Quantity({ quantity }) {
     return (
-        <div className="flex gap-x-2 items-center border w-full p-2">
-            <button type="button" onClick={() => dispatch(decrement(product.id))}>-</button>
-            <input min="1" max="10" name="product_quantity" value={quantity} readOnly className="w-full text-center" />
-            <button type="button" onClick={() => dispatch(increment(product.id))}>+</button>
+        <div className='flex items-center gap-x-2 justify-center px-2 py-1 border '>
+            <button className='hover:text-purple-300 disabled:text-gray-300' onClick={() => quantityDecrement()}>
+                -
+            </button>
+            <p min="1" max="10" className="w-full text-center">{quantity}</p>
+            <button className='hover:text-purple-300' onClick={() => quantityIncrement()}>
+                +
+            </button>
         </div>
     )
 }

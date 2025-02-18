@@ -13,6 +13,12 @@ export async function getTotalPages() {
   return data.rowCount
 }
 
+// export async function tryGetProducts() {
+//   unstable_noStore()
+//   const data = await sql`SELECT * FROM noon_products limit 1`
+//   return data.rows
+// }
+
 export async function getProducts(query, currentPage, sort, filters) {
   unstable_noStore();
   const offset = (currentPage - 1) * 8;
