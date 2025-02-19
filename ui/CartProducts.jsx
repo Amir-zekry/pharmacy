@@ -5,7 +5,10 @@ import { useState } from "react";
 
 export default function CartProducts({ product }) {
     const handleRemoveProduct = async () => {
-        await removeProduct(product.product_id); // Wait for the actual operation to complete
+        setIsLoading(true)
+        await removeProduct(product.product_id);
+        setIsLoading(false);
+        // Wait for the actual operation to complete
     };
     const [Loading, setIsLoading] = useState(false);
 
