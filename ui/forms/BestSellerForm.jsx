@@ -5,7 +5,7 @@ import { openCart } from "@/Redux/cart";
 import { addToCart, removeFromCart } from "@/Redux/addToCart";
 import AddToCart from "../buttons/addToCart";
 
-export default function BestSellerForm({ product }) {
+export default function BestSellerForm({ product, cartProducts }) {
     const dispatch = useDispatch();
 
     const add = async (event) => {
@@ -41,7 +41,7 @@ export default function BestSellerForm({ product }) {
             <input type="hidden" name="product_image" value={product.image_url} />
             <input type="hidden" name="product_id" value={product.id} />
             <input name="product_quantity" value={1} type="hidden" />
-            <AddToCart product={product} />
+            <AddToCart product={product} cartProducts={cartProducts} />
         </form>
     );
 }
