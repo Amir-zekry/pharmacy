@@ -7,17 +7,17 @@ import { authOptions } from './api/auth/[...nextauth]/route';
 import getUserId from './auth';
 import { cookies } from 'next/headers';
 
+// await new Promise((resolve) => {
+//   setTimeout(() => {
+//     resolve();
+//   }, 3000);
+// })
+
 export async function getTotalPages() {
   unstable_noStore()
   const data = await sql`SELECT * FROM noon_products`
   return data.rowCount
 }
-
-// export async function tryGetProducts() {
-//   unstable_noStore()
-//   const data = await sql`SELECT * FROM noon_products limit 1`
-//   return data.rows
-// }
 
 export async function getProducts(query, currentPage, sort, filters) {
   unstable_noStore()
@@ -43,11 +43,6 @@ export async function getProducts(query, currentPage, sort, filters) {
 
 export async function getBestSellers() {
   unstable_noStore();
-  await new Promise((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, 3000);
-  })
   const data = await sql`SELECT * FROM noon_products ORDER BY count DESC LIMIT 4`;
   return data.rows;
 }
