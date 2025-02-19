@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { openCart } from "@/Redux/cart";
 import { addToCart, removeFromCart } from "@/Redux/addToCart";
 import AddToCart from "../buttons/addToCart";
-import Quantity from "../buttons/quantity";
 
 export default function BestSellerForm({ product }) {
     const dispatch = useDispatch();

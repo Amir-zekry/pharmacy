@@ -2,18 +2,18 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const addToCartSlice = createSlice({
     name: 'addToCart',
-    initialState: {
-        value: false,
-    },
+    initialState: {},
     reducers: {
-        addToCart: state => {
-            state.value = true;
+        addToCart: (state, action) => {
+            const productId = action.payload; // Fix payload structure
+            state[productId] = { isLoading: true };
         },
-        removeFromCart: state => {
-            state.value = false;
-        }
+        removeFromCart: (state, action) => {
+            const productId = action.payload;
+            state[productId] = { isLoading: false };
+        },
     },
-})
+});
 
 export const { addToCart, removeFromCart } = addToCartSlice.actions;
 export default addToCartSlice.reducer;

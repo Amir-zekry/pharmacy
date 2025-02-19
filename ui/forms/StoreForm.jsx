@@ -5,23 +5,25 @@ import { openCart } from "@/Redux/cart";
 import { addToCart, removeFromCart } from "@/Redux/addToCart";
 import AddToCart from "../buttons/addToCart";
 
-const StoreForm = ({ product }) => {
+const StoreForm = ({ product, cartProducts }) => {
     const dispatch = useDispatch();
 
     const add = async (event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
+
         try {
-            dispatch(openCart());
-            dispatch(addToCart());
+            dispatch(addToCart(product.id)); // Start loading state
             await pushProducts(formData);
-            await getCartProducts()
+            await getCartProducts();
         } catch (error) {
             console.error("Error pushing products:", error);
         } finally {
-            dispatch(removeFromCart());
+            dispatch(removeFromCart(product.id));
+            dispatch(openCart());
         }
     };
+
 
     return (
         <form onSubmit={add} className="flex flex-col space-y-1 items-center sm:text-sm">
@@ -39,7 +41,7 @@ const StoreForm = ({ product }) => {
             <input type="hidden" name="product_image" value={product.image_url} readOnly />
             <input type="hidden" name="product_id" value={product.id} readOnly />
             <input name="product_quantity" value={1} type="hidden" />
-            <AddToCart />
+            <AddToCart product={product} cartProducts={cartProducts} />
         </form>
     );
 };

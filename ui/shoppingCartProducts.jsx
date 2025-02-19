@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import React from 'react';
 import { TbShoppingCartCancel } from "react-icons/tb";
-import { getCartProducts, quantityDecrement, quantityIncrement, removeProduct } from '@/app/actions';
+import { quantityDecrement, quantityIncrement, removeProduct } from '@/app/actions';
 import { useState } from 'react';
 
 const ShoppingCartProducts = ({ product }) => {
