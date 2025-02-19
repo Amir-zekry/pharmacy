@@ -1,4 +1,4 @@
-import { getLastOrder, getLastOrderItems } from "@/app/actions";
+import { getLastOrder, getLastOrderItems } from "@/app/lib/data";
 import OrderSummary from "@/app/ui/orderSummary";
 
 export default async function () {

@@ -1,7 +1,7 @@
-import Header from "@/ui/Header";
-import PharmacyFeatures from "@/ui/PharmacyFeatures";
-import BestSellersProducts from "@/ui/BestSellersProducts";
-import BestSellerProductsSkeleton from "@/ui/skeletons/BestSellerProductsSkeleton";
+import Header from "@/app/ui/Header";
+import PharmacyFeatures from "@/app/ui/PharmacyFeatures";
+import BestSellersProducts from "@/app/ui/BestSellersProducts";
+import BestSellerProductsSkeleton from "@/app/ui/skeletons/BestSellerProductsSkeleton";
 import { Suspense } from "react";
 
 export default async function HomePage() {

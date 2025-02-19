@@ -1,5 +1,5 @@
-import Cart from "@/ui/Cart"
-import EmptyCart from "@/ui/emptyCart";
+import Cart from "@/app/ui/Cart"
+import EmptyCart from "@/app/ui/emptyCart";
 import { getCartProducts, getCartTotalPrice } from "@/app/actions"
 
 

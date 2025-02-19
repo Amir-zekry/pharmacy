@@ -1,4 +1,4 @@
-import Orders from "@/ui/orders";
+import Orders from "@/app/ui/orders";
 import { getUserOrders } from "../actions";
 
 export default async function () {

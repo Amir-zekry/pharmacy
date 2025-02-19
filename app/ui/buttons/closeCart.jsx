@@ -1,6 +1,6 @@
 'use client'
 import { MdArrowForwardIos } from "react-icons/md";
-import { closeCart } from '@/Redux/cart';
+import { closeCart } from '@/app/Redux/cart';
 import { useDispatch } from 'react-redux';
 export default function CloseCart() {
     const dispatch = useDispatch();

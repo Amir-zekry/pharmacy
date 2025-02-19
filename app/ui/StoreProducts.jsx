@@ -1,4 +1,5 @@
-import { getCartProducts, getProducts } from "@/app/actions";
+import { getProducts } from "@/app/lib/data";
+import { getCartProducts } from "../actions";
 import StoreForm from "./forms/StoreForm";
 
 

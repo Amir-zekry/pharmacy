@@ -1,4 +1,4 @@
-import Checkout from "@/ui/checkout";
+import Checkout from "@/app/ui/checkout";
 import { getCartProducts, getCartTotalPrice } from "../../actions";
 
 export default async function CheckoutPage() {

@@ -1,8 +1,8 @@
 'use client'
 import { configureStore } from '@reduxjs/toolkit';
-import cartReducer from './cart';
-import filtersReducer from '@/Redux/filters'
-import addToCartReducer from '@/Redux/addToCart'
+import cartReducer from '@/app/Redux/cart';
+import filtersReducer from '@/app/Redux/filters'
+import addToCartReducer from '@/app/Redux/addToCart'
 
 // ...existing code...
 

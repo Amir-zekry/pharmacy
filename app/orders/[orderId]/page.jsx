@@ -1,5 +1,5 @@
 import { getOrderDetails, getOrderDetailsItems } from "@/app/actions";
-import OrderDetails from "@/ui/orderDetails";
+import OrderDetails from "@/app/ui/orderDetails";
 export default async function Page(props) {
     const params = await props.params;
     const id = params.orderId;

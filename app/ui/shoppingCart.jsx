@@ -2,7 +2,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import clsx from 'clsx';
-import { closeCart } from '@/Redux/cart';
+import { closeCart } from '@/app/Redux/cart';
 import { useDispatch } from 'react-redux';
 import ShoppingCartProducts from './shoppingCartProducts';
 import { MdArrowForwardIos } from "react-icons/md";

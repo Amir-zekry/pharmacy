@@ -1,6 +1,6 @@
 'use client'
 import { useDispatch } from "react-redux"
-import { showFilters } from "@/Redux/filters"
+import { showFilters } from "@/app/Redux/filters"
 
 export default function ShowFilters() {
     const dispatch = useDispatch()

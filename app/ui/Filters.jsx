@@ -1,5 +1,5 @@
 "use client";
-import { hideFilters } from "@/Redux/filters";
+import { hideFilters } from "@/app/Redux/filters";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";

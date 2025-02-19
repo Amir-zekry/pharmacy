@@ -4,7 +4,7 @@ import { revalidatePath, revalidateTag, unstable_noStore } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { getServerSession } from 'next-auth';
 import { authOptions } from './api/auth/[...nextauth]/route';
-import getUserId from './auth';
+import getUserId from '@/app/lib/auth';
 import { cookies } from 'next/headers';
 
 // await new Promise((resolve) => {
@@ -17,28 +17,6 @@ export async function getTotalPages() {
   unstable_noStore()
   const data = await sql`SELECT * FROM noon_products`
   return data.rowCount
-}
-
-export async function getProducts(query, currentPage, sort, filters) {
-  unstable_noStore()
-  const offset = (currentPage - 1) * 8;
-  const data = await sql`
-    SELECT *
-    FROM noon_products
-    WHERE
-      name ILIKE ${`%${query}%`}
-    GROUP BY 
-      id, name, category, price
-    HAVING 
-    CASE WHEN ${filters} = 'all' OR ${filters} = '' THEN true ELSE category = ${filters} END
-    ORDER BY 
-      CASE WHEN ${sort} = 'name' THEN name::text END ASC,
-      CASE WHEN ${sort} = 'category' THEN category::text END ASC,
-      CASE WHEN ${sort} = 'price' THEN price::numeric END ASC,
-      CASE WHEN ${sort} = 'price desc' THEN price::numeric END DESC
-    LIMIT 8 OFFSET ${offset}
-  `;
-  return data.rows;
 }
 
 export async function getBestSellers() {

@@ -1,5 +1,5 @@
 'use server'
-import { getGuestId } from "./actions";
+import { getGuestId } from "@/app/actions";
 
 export default async function getUserId(session) {
     const guest_id = await getGuestId()

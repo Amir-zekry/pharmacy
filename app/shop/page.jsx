@@ -1,11 +1,11 @@
-import StoreProducts from "@/ui/StoreProducts";
-import Filters from "@/ui/Filters";
-import Sort from "@/ui/Sort";
-import Search from "@/ui/Search";
-import Pagination from "@/ui/pagination";
+import StoreProducts from "@/app/ui/StoreProducts";
+import Filters from "@/app/ui/Filters";
+import Sort from "@/app/ui/Sort";
+import Search from "@/app/ui/Search";
+import Pagination from "@/app/ui/pagination";
 import { Suspense } from "react";
-import StoreProductsSkeleton from "@/ui/skeletons/storeProductsSkeleton";
-import ShowFilters from "@/ui/buttons/showFilters";
+import StoreProductsSkeleton from "@/app/ui/skeletons/storeProductsSkeleton";
+import ShowFilters from "@/app/ui/buttons/showFilters";
 import { getTotalPages } from "../actions";
 
 export default async function (props) {

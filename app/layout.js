@@ -1,12 +1,12 @@
 // filepath: /d:/webApps/noon/noon/app/layout.js
 import "./globals.css";
-import Nav from "../ui/Nav";
-import Footer from "@/ui/Footer";
-import ReduxProvider from "@/Redux/provider";
-import ShoppingCart from "@/ui/shoppingCart";
+import Nav from "@/app/ui/Nav";
+import Footer from "@/app/ui/Footer";
+import ReduxProvider from "@/app/Redux/provider";
+import ShoppingCart from "@/app/ui/shoppingCart";
 import { getCartProductsCount, getCartProducts, getCartTotalPrice } from "@/app/actions";
 import CustomSessionProvider from "./SessionProvider";
-import { inter } from "@/ui/fonts/fonts";
+import { inter } from "@/app/ui/fonts/fonts";
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { openCart } from '@/Redux/cart';
+import { openCart } from '@/app/Redux/cart';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
