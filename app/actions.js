@@ -20,6 +20,7 @@ export async function getTotalPages() {
 // }
 
 export async function getProducts(query, currentPage, sort, filters) {
+  unstable_noStore()
   const offset = (currentPage - 1) * 8;
   const data = await sql`
     SELECT *
@@ -42,6 +43,11 @@ export async function getProducts(query, currentPage, sort, filters) {
 
 export async function getBestSellers() {
   unstable_noStore();
+  await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, 3000);
+  })
   const data = await sql`SELECT * FROM noon_products ORDER BY count DESC LIMIT 4`;
   return data.rows;
 }

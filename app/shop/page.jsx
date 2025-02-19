@@ -29,7 +29,7 @@ export default async function (props) {
           <Search />
           <Sort />
         </div>
-        <Suspense fallback={<StoreProductsSkeleton />}>
+        <Suspense key={query + currentPage} fallback={<StoreProductsSkeleton />}>
           <StoreProducts query={query} currentPage={currentPage} sort={sort} filters={filters} />
         </Suspense>
         <Pagination products={products} />

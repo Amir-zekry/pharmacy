@@ -1,14 +1,16 @@
-import BestSellers from "@/ui/BestSellers";
 import Header from "@/ui/Header";
-import { getBestSellers } from "./actions";
 import PharmacyFeatures from "@/ui/PharmacyFeatures";
+import BestSellersProducts from "@/ui/BestSellersProducts";
+import BestSellerProductsSkeleton from "@/ui/skeletons/BestSellerProductsSkeleton";
+import { Suspense } from "react";
 
 export default async function HomePage() {
-  const products = await getBestSellers();
   return (
     <div className="w-full min-h-screen">
       <Header />
-      <BestSellers products={products} />
+      <Suspense fallback={<BestSellerProductsSkeleton />}>
+        <BestSellersProducts />
+      </Suspense>
       <PharmacyFeatures />
     </div>
   );
