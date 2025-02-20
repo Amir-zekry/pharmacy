@@ -3,7 +3,7 @@
 import { openCart } from '@/app/Redux/cart';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { FaShoppingBag } from "react-icons/fa";
 import { useSession, signOut } from 'next-auth/react';
@@ -15,12 +15,28 @@ import NavLinks from './navLinks';
 export default function Nav({ cartProductsCount }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
     const dispatch = useDispatch();
     const { data: session } = useSession();
 
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 0) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
         <nav
-            className="fixed w-full text-black transition-all duration-300 z-50 bg-[#F8ECE5]" >
+            className={clsx("fixed w-full text-black transition-all duration-300 z-50", isScrolled ? "bg-white" : "bg-[#F8ECE5]")}>
             <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
 
                 {/* Logo */}

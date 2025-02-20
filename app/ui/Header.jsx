@@ -6,7 +6,7 @@ export default function Header() {
     return (
         <header className="relative p-6 bg-[#F8ECE5]">
             <div
-                className="bg-fixed bg-cover bg-center w-full h-[60vh] md:h-screen flex justify-center items-center"
+                className="bg-fixed bg-auto bg-center w-full h-[60vh] md:h-screen flex justify-center items-center"
                 style={{ backgroundImage: "url('/noonpharmacy.webp')" }}
             >
                 <div className="p-6 bg-white bg-opacity-80 rounded-md shadow-lg max-w-md text-center">

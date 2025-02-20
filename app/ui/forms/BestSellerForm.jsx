@@ -11,17 +11,19 @@ export default function BestSellerForm({ product, cartProducts }) {
     const add = async (event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
+
         try {
-            dispatch(openCart());
-            dispatch(addToCart());
+            dispatch(addToCart(product.id)); // Start loading state
             await pushProducts(formData);
-            await getCartProducts()
+            await getCartProducts();
         } catch (error) {
             console.error("Error pushing products:", error);
         } finally {
-            dispatch(removeFromCart());
+            dispatch(removeFromCart(product.id));
+            dispatch(openCart());
         }
     };
+
     return (
         <form onSubmit={add} className="flex relative space-y-1 flex-col items-center text-center sm:text-sm justify-center">
             <p className="absolute flex items-center justify-center top-2 left-2 bg-amber-400 px-4 py-1">Best seller</p>
