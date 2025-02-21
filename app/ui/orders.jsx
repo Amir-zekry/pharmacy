@@ -31,7 +31,8 @@ export default function Orders({ orders }) {
                         {orders.map((order) => (
                             <tr
                                 key={order.order_id}
-                                className="hover:bg-gray-50"
+                                className="hover:bg-gray-50 cursor-pointer"
+                                onClick={() => window.location.href = `/orders/${order.order_id}`}
                             >
                                 <td className="px-2 py-2 border-b">{order.order_id}</td>
                                 <td className="px-2 py-2 border-b">{order.user_id}</td>
@@ -46,14 +47,6 @@ export default function Orders({ orders }) {
                                 <td className="px-2 py-2 border-b">{order.total_amount}</td>
                                 <td className={`px-2 py-2 border-b ${order.status === 'Canceled' ? 'text-red-400' : order.status === 'Pending' ? 'text-blue-400' : 'text-green-400'}`}>{order.status}</td>
                                 <td className="px-2 py-2 border-b">{order.payment_method}</td>
-                                <td className="flex flex-col items-center justify-center space-y-2 px-2 py-2 border-b">
-                                    <Link className="hover:text-gray-300 rounded-lg" href={`/orders/${order.order_id}`}>
-                                        <CiEdit size={25} />
-                                    </Link>
-                                    <button onClick={() => cancelOrder(order.order_id)} className="hover:text-gray-300 whitespace-nowrap flex">
-                                        <TbCancel size={25} />
-                                    </button>
-                                </td>
                             </tr>
                         ))}
                     </tbody>

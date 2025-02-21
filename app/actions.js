@@ -6,12 +6,105 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from './api/auth/[...nextauth]/route';
 import getUserId from '@/app/lib/auth';
 import { cookies } from 'next/headers';
+import { z } from 'zod';
 
 // await new Promise((resolve) => {
 //   setTimeout(() => {
 //     resolve();
 //   }, 3000);
 // })
+
+
+
+const formSchema = z.object({
+  first_name: z.string().min(1, { message: 'Enter a valid name' }),
+  phone_number: z.string()
+    .regex(/^(010|011|012|015)\d{8}$/, { message: 'Enter a valid phone number' }),
+  payment_method: z.string({
+    invalid_type_error: 'please select a payment method'
+  }),
+  shipping_address: z.string().min(1, { message: 'Enter a valid address' })
+});
+
+
+
+
+export async function pushIntoOrders(prevState, formData, products) {
+  const session = await getServerSession(authOptions); // Get session
+  const user_id = await getUserId(session); // Get user ID (email or guest ID)
+  const rawData = {
+    first_name: formData.get("first_name"),
+    last_name: formData.get("last_name"),
+    phone_number: formData.get("phone_number"),
+    payment_method: formData.get('payment_method'),
+    shipping_address: formData.get("shipping_address"),
+  }
+
+  const validatedFields = formSchema.safeParse(rawData)
+
+  if (!validatedFields.success) {
+    console.log(validatedFields.error.flatten().fieldErrors);
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: 'Missing Fields. Failed to make an order.',
+      data: rawData
+    };
+  }
+
+  const { first_name, phone_number, payment_method, shipping_address } = validatedFields.data
+  await sql`
+  INSERT INTO noon_orders (
+    user_id,
+    first_name,
+    email,
+    phone_number,
+    zip_code,
+    shipping_address,
+    total_amount,
+    payment_method
+  ) VALUES (
+    ${user_id},
+    ${first_name},
+    ${formData.get("email")},
+    ${phone_number},
+    ${formData.get("zip_code")},
+    ${shipping_address},
+    ${formData.get('total_price')},
+    ${payment_method}
+  )
+`
+  const result = await sql`
+  SELECT order_id 
+  FROM noon_orders 
+  ORDER BY created_at DESC 
+  LIMIT 1;
+`;
+
+  const order_id = result.rows[0]?.order_id;
+
+  for (let i = 0; i < products.length; i++) {
+    await sql`
+      INSERT INTO noon_order_items (
+        order_id,
+        product_id,
+        product_name,
+        price,
+        quantity,
+        order_image
+      ) VALUES (
+        ${order_id},
+        ${formData.get('product_id')},
+        ${formData.get('product_name')},
+        ${formData.get('price')},
+        ${formData.get('quantity')},
+        ${formData.get('order_image')}
+      );
+    `;
+  }
+  await sql`DELETE FROM noon_cart WHERE user_id = ${user_id}`;
+  revalidatePath('/cart/checkout/summary');
+  redirect('/cart/checkout/summary');
+}
 
 export async function getTotalPages() {
   unstable_noStore()
@@ -116,66 +209,14 @@ export async function quantityDecrement(productId) {
   }
 }
 
-export async function pushIntoOrders(formData, products) {
-  const session = await getServerSession(authOptions); // Get session
-  const user_id = await getUserId(session); // Get user ID (email or guest ID)
-  const result = await sql`
-    INSERT INTO noon_orders (
-      user_id,
-      first_name,
-      last_name,
-      email,
-      phone_number,
-      zip_code,
-      shipping_address,
-      total_amount,
-      payment_method
-    ) VALUES (
-      ${user_id},
-      ${formData.get("first_name")},
-      ${formData.get("last_name")},
-      ${formData.get("email")},
-      ${formData.get("phone_number")},
-      ${formData.get("zip_code")},
-      ${formData.get("shipping_address")},
-      ${formData.get('total_price')},
-      ${formData.get('payment_method')}
-    )
-    RETURNING order_id;
-  `;
-  const order_id = result.rows[0]?.order_id;
 
-  for (let i = 0; i < products.length; i++) {
-    await sql`
-      INSERT INTO noon_order_items (
-        order_id,
-        product_id,
-        product_name,
-        price,
-        quantity,
-        order_image
-      ) VALUES (
-        ${order_id},
-        ${products[i].product_id},
-        ${products[i].product_name},
-        ${products[i].product_price},
-        ${products[i].product_quantity},
-        ${products[i].product_image}
-      );
-    `;
-  }
-
-  await sql`DELETE FROM noon_cart WHERE user_id = ${user_id}`;
-  revalidateTag('noon_cart');
-  redirect('/cart/checkout/order_summary');
-}
 
 export async function getLastOrder() {
   const session = await getServerSession(authOptions); // Get session
   const user_id = await getUserId(session); // Get user ID (email or guest ID)
   const data = await sql`
     SELECT * FROM noon_orders
-    WHERE user_id = ${user_id}  ORDER BY order_id DESC LIMIT 1
+    WHERE user_id = ${user_id} ORDER BY order_id DESC LIMIT 1
   `;
   return data.rows;
 }

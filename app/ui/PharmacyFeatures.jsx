@@ -2,7 +2,7 @@ import { TbHours24 } from "react-icons/tb";
 
 export default function PharmacyFeatures() {
     return (
-        <main className="relative flex items-center w-full min-h-screen h-screen md:my-20 my-96 md:pl-20 md:pr-96">
+        <main className="relative flex items-center w-full min-h-screen h-screen md:my-20 my-96">
             <div className="absolute flex md:flex-row flex-col w-full md:h-full">
                 <div
                     className="w-full h-full md:hidden block bg-fixed bg-center bg-auto bg-no-repeat z-40"
@@ -11,7 +11,7 @@ export default function PharmacyFeatures() {
                         height: '90vh'
                     }}
                 />
-                <section className="bg-[#F8ECE5] md:text-left text-center justify-center items-center md:pl-40 pt-10 md:whitespace-nowrap">
+                <section className="bg-[#F8ECE5] md:text-left text-center justify-center items-center md:ml-40 pt-10 md:whitespace-nowrap">
                     <div className="flex flex-col py-5 space-y-5">
                         <h2 className="text-black text-3xl font-bold flex space-x-4 items-center w-full justify-center md:justify-start">
                             <TbHours24 size={40} className="text-[#724EE2]" />
@@ -40,7 +40,7 @@ export default function PharmacyFeatures() {
                     </div>
                 </section>
                 <div
-                    className="w-full md:block hidden bg-fixed bg-center bg-auto bg-no-repeat z-40"
+                    className="w-full md:block hidden bg-fixed bg-auto bg-no-repeat z-40"
                     style={{
                         backgroundImage: "url('/2a1a02_d6de3be18b144bb7b27eb57317c98f49~mv2.avif')",
                         backgroundPosition: "top 50% left 90%",
@@ -48,7 +48,9 @@ export default function PharmacyFeatures() {
                     }}
                 />
             </div>
-            <div className="bg-[#F8ECE5] w-full h-[110vh] py-40 hidden md:block"></div>
+            <div className="w-full h-[110vh] md:pr-96 md:pl-20">
+                <div className="bg-[#F8ECE5] w-full h-[110vh] py-40 hidden md:block"></div>
+            </div>
         </main>
     );
 }

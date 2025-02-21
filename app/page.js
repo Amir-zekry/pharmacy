@@ -12,8 +12,8 @@ export default async function HomePage() {
       <Suspense fallback={<BestSellerProductsSkeleton />}>
         <BestSellersProducts />
       </Suspense>
-      <div className="w-full flex items-center justify-center my-10">
-        <Link href='/shop' className="w-80 text-center py-2 bg-[#724EE2] hover:bg-[#BFAAF9] text-white">Shop All</Link>
+      <div className="w-full md:flex grid grid-cols-1 items-center justify-center my-10 px-10">
+        <Link href='/shop' className="md:w-80 w-full text-center py-2 bg-[#724EE2] hover:bg-[#BFAAF9] text-white">Shop All</Link>
       </div>
       <PharmacyFeatures />
     </div>
