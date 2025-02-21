@@ -102,6 +102,11 @@ export async function pushIntoOrders(prevState, formData, products) {
         ${user_id}
       );
     `;
+    await sql`
+    UPDATE noon_products
+    SET count = count + 1
+    WHERE id = ${formData.get('product_id')}
+  `;
   }
   await sql`DELETE FROM noon_cart WHERE user_id = ${user_id}`;
   revalidatePath('/cart/checkout/summary');
@@ -242,14 +247,6 @@ export async function getCartProductsCount() {
     WHERE user_id = ${user_id}
   `;
   return data.rowCount;
-}
-
-export async function IncreasePurchaseCount(id) {
-  await sql`
-    UPDATE noon_products
-    SET count = count + 1
-    WHERE id = ${id}
-  `;
 }
 
 export async function getUserOrders() {
