@@ -90,14 +90,16 @@ export async function pushIntoOrders(prevState, formData, products) {
         product_name,
         price,
         quantity,
-        order_image
+        order_image,
+        user_id
       ) VALUES (
         ${order_id},
         ${formData.get('product_id')},
         ${formData.get('product_name')},
         ${formData.get('price')},
         ${formData.get('quantity')},
-        ${formData.get('order_image')}
+        ${formData.get('order_image')},
+        ${user_id}
       );
     `;
   }
@@ -222,9 +224,11 @@ export async function getLastOrder() {
 }
 
 export async function getLastOrderItems() {
+  const session = await getServerSession(authOptions); // Get session
+  const user_id = await getUserId(session);
   const data = await sql`
     SELECT * FROM noon_order_items
-    WHERE order_id = (SELECT order_id FROM noon_orders ORDER BY order_id DESC LIMIT 1)
+    WHERE order_id = (SELECT order_id FROM noon_orders ORDER BY order_id DESC LIMIT 1) AND user_id = ${user_id}
     ORDER BY order_id DESC
   `;
   return data.rows;
