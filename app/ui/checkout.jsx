@@ -30,16 +30,7 @@ export default function Checkout({ products, totalPrice }) {
                 <div className="max-w-4xl w-full h-max rounded-md px-4 py-8 sticky top-0">
                     <h2 className="text-2xl font-bold text-gray-800">Complete your order</h2>
                     <form action={formAction} className="mt-8">
-                        {products.map((product) => (
-                            <div key={product.product_id}>
-                                <input type="hidden" name="product_id" value={product.product_id} />
-                                <input type="hidden" name="product_name" value={product.product_name} />
-                                <input type="hidden" name="price" value={product.product_price} />
-                                <input type="hidden" name="quantity" value={product.product_quantity} />
-                                <input type="hidden" name="order_image" value={product.product_image} />
-                                <input type="hidden" name="total_price" value={totalPrice} />
-                            </div>
-                        ))}                        <div>
+                        <div>
                             <h3 className="text-sm lg:text-base text-gray-800 mb-4">Personal Details</h3>
                             <div className="grid md:grid-cols-2 gap-4">
                                 <div>

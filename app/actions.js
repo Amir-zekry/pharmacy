@@ -40,6 +40,8 @@ export async function pushIntoOrders(prevState, formData, products) {
     shipping_address: formData.get("shipping_address"),
   }
 
+
+
   const validatedFields = formSchema.safeParse(rawData)
 
   if (!validatedFields.success) {
@@ -81,7 +83,6 @@ export async function pushIntoOrders(prevState, formData, products) {
 `;
 
   const order_id = result.rows[0]?.order_id;
-
   for (let i = 0; i < products.length; i++) {
     await sql`
       INSERT INTO noon_order_items (
@@ -94,20 +95,18 @@ export async function pushIntoOrders(prevState, formData, products) {
         user_id
       ) VALUES (
         ${order_id},
-        ${formData.get('product_id')},
-        ${formData.get('product_name')},
-        ${formData.get('price')},
-        ${formData.get('quantity')},
-        ${formData.get('order_image')},
+        ${products[i].product_id},
+        ${products[i].product_name},
+        ${products[i].product_price},
+        ${products[i].product_quantity},
+        ${products[i].product_image},
         ${user_id}
       );
     `;
-    await sql`
-    UPDATE noon_products
-    SET count = count + 1
-    WHERE id = ${formData.get('product_id')}
-  `;
+
+
   }
+
   await sql`DELETE FROM noon_cart WHERE user_id = ${user_id}`;
   revalidatePath('/cart/checkout/summary');
   redirect('/cart/checkout/summary');
